@@ -575,11 +575,13 @@ function update(elapsedTime){
 		wave = 4;
 	}
 	if(wave > 3 && Asteroids.length == 0){
+		var speed = 3;
 		if(wave % 4 == 0){
 			alien = new Alien(WIDTH - 1, HEIGHT - 1);
 		}
+		if(wave > 7) speed = 4;
 		wave++;
-		generateRandomAsteroids(4,wave,4);
+		generateRandomAsteroids(4,wave,speed);
 	}
 	//Player Input
 	if(currentInput.up){
@@ -1027,6 +1029,7 @@ function render(ctx){
 			x += 10;
 		}
 		ctx.fillText("Score: " + score, WIDTH-120, 15);
+		ctx.fillText("Level: " + wave, WIDTH/2 - 20, 15);
 	}
 	else{ 
 	
